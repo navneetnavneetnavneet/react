@@ -1,121 +1,51 @@
 import React from "react";
-import { useState } from "react";
 
 const App = () => {
-  const [users, setUsers] = useState([]);
-
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("male");
-  const [city, setCity] = useState("bhopal");
-  const [discription, setDiscription] = useState("");
-  const [accept, setAccept] = useState(false);
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-
-    // console.log({ username, email, gender, city, discription, accept });
-    const newUser = { username, email, gender, city, discription, accept };
-    setUsers([...users, newUser]);
-
-    setUsername("");
-    setEmail("");
-    setGender("male");
-    setCity("bhopal");
-    setDiscription("");
-    setAccept(false);
-  };
-
-  // console.log(users);
-
-  const listRender =
-    users.length > 0 ? (
-      users.map((user, index) => {
-        return (
-          <div key={index}>
-            <h1>{user.username}</h1>
-            <p>{user.city}</p>
-          </div>
-        );
-      })
-    ) : (
-      <h1>no data prasent</h1>
-    );
-
   return (
     <>
-      <h1>Form Handling in React</h1>
-      <form onSubmit={submitHandler}>
-        <input
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-          type="text"
-          placeholder="Username"
-        />
-        <br />
-        <br />
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          type="email"
-          placeholder="email@email.com"
-        />
-        <br />
-        <br />
-        <input
-          onChange={(e) => setGender(e.target.value)}
-          checked={gender === "male" ? true : false}
-          type="radio"
-          value="male"
-          name="gender"
-        />
-        Male
-        <input
-          onChange={(e) => setGender(e.target.value)}
-          checked={gender === "female" ? true : false}
-          type="radio"
-          value="female"
-          name="gender"
-        />
-        Female
-        <input
-          onChange={(e) => setGender(e.target.value)}
-          checked={gender === "other" ? true : false}
-          type="radio"
-          value="other"
-          name="gender"
-        />
-        Other
-        <br />
-        <br />
-        <select onChange={(e) => setCity(e.target.value)} value={city}>
-          <option value="delhi">Delhi</option>
-          <option value="bhopal">Bhopal</option>
-          <option value="indore">Indore</option>
-          <option value="pune">Pune</option>
-          <option value="mumbai">Mumbai</option>
-        </select>
-        <br />
-        <br />
-        <textarea
-          onChange={(e) => setDiscription(e.target.value)}
-          value={discription}
-          placeholder="Write text here..."
-        ></textarea>
-        <br />
-        <br />
-        <input
-          onChange={(e) => setAccept(e.target.checked)}
-          checked={accept ? true : false}
-          type="checkbox"
-        />
-        Accept
-        <br />
-        <br />
-        <button>Submit</button>
-      </form>
-
-      {listRender}
+      <div className="w-full h-screen bg-gray-900 flex flex-col items-center justify-center">
+        <div className="w-[25%] h-[25%] border-2 rounded-xl px-10 flex items-center justify-between">
+          <div className="text-white">
+            <h1 className="text-4xl font-semibold">Todo App</h1>
+            <h5 className="text-sm">Learning simple them</h5>
+          </div>
+          <div className="w-20 h-20 bg-orange-600 rounded-full flex items-center justify-center text-2xl font-semibold">
+            0/0
+          </div>
+        </div>
+        <div className="w-[25%] my-10 flex items-center gap-2">
+          <input
+            type="text"
+            placeholder="Write Todo..."
+            className="w-full px-4 py-2 border-2 text-xl font-semibold text-white outline-none bg-transparent rounded-lg"
+          />
+          <button className="w-12 h-12 rounded-full bg-orange-600 flex-shrink-0 text-3xl font-semibold">
+            +
+          </button>
+        </div>
+        <ul className="taskitems w-[25%] h-[40%] overflow-y-auto duration-200 py-2">
+          <li className="px-4 py-2 mb-5 border-2 rounded-md flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-full border-2 border-orange-600"></div>
+              <h1 className="text-white text-xl font-semibold">Task</h1>
+            </div>
+            <div className="flex items-center gap-5 text-white text-xl">
+              <i className="ri-pencil-line cursor-pointer"></i>
+              <i className="ri-delete-bin-line cursor-pointer"></i>
+            </div>
+          </li>
+          <li className="px-4 py-2 mb-5 border-2 rounded-md flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-full border-2 bg-green-600 border-green-600"></div>
+              <h1 className="text-white text-xl font-semibold line-through">Task</h1>
+            </div>
+            <div className="flex items-center gap-5 text-white text-xl">
+              <i className="ri-pencil-line cursor-pointer"></i>
+              <i className="ri-delete-bin-line cursor-pointer"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
     </>
   );
 };
