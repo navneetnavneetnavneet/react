@@ -1,32 +1,20 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
-import CreateTodo from "./CreateTodo";
-import TodoList from "./TodoList";
+import Form from "./components/Form";
+import List from "./components/List";
 
 const App = () => {
-  const [tasks, setTasks] = useState(
-    JSON.parse(localStorage.getItem("todos")) || []
+  const [users, setUsers] = useState(
+    JSON.parse(localStorage.getItem("users")) || []
   );
+  console.log(users);
 
   return (
     <>
-      <div className="w-full h-screen bg-gray-900 flex flex-col items-center justify-center">
-        <Header tasks={tasks} />
+      <div>
+        <h1>Form</h1>
+        <Form users={users} setUsers={setUsers} />
 
-        <CreateTodo tasks={tasks} setTasks={setTasks} />
-
-        <ul className="taskitems w-[25%] h-[40%] overflow-y-auto duration-200 py-2">
-          {tasks.map((task, index) => {
-            return (
-              <TodoList
-                task={task}
-                tasks={tasks}
-                index={index}
-                setTasks={setTasks}
-              />
-            );
-          })}
-        </ul>
+        <List users={users} setUsers={setUsers} />
       </div>
     </>
   );
