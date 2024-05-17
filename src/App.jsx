@@ -10,8 +10,8 @@ const App = () => {
 
   return (
     <>
-      <div>
-        <h1>Form</h1>
+      <div className="w-full h-screen bg-zinc-900 flex flex-col items-center justify-center">
+        <h1 className="text-3xl font-semibold text-orange-600">Two-way binding</h1>
         <Form users={users} setUsers={setUsers} />
 
         <List users={users} setUsers={setUsers} />
