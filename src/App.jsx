@@ -11,11 +11,11 @@ const App = () => {
 
   return (
     <div className="w-full h-screen bg-zinc-900 flex flex-col items-center justify-center">
-      <Header tasks={tasks} />
+      <Header />
 
-      <Form tasks={tasks} setTasks={setTasks} />
+      <Form />
 
-      <List tasks={tasks} setTasks={setTasks} />
+      <List />
     </div>
   );
 };

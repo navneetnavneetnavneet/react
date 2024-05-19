@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { taskcontext } from "../contexts/TaskContext";
 
-const Header = ({tasks}) => {
+const Header = () => {
+  const [tasks, setTasks] = useContext(taskcontext);
+
   return (
     <div className="w-[30%] h-[30%] border-2 rounded-xl flex justify-between items-center px-10 py-10">
       <div className="text-white">

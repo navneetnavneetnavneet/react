@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { taskcontext } from "../contexts/TaskContext";
 
-const List = ({ tasks, setTasks }) => {
-    
+const List = () => {
+  const [tasks, setTasks] = useContext(taskcontext);
+
   const completeHandler = (index) => {
     const copyTasks = [...tasks];
     copyTasks[index].completed = !copyTasks[index].completed;

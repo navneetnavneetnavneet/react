@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { nanoid } from "nanoid";
+import { taskcontext } from "../contexts/TaskContext";
 
-const Form = ({ tasks, setTasks }) => {
+const Form = () => {
+  const [tasks, setTasks] = useContext(taskcontext);
+  
   const [title, setTitle] = useState("");
 
   const submitHandler = (event) => {
